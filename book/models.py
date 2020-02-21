@@ -1,13 +1,15 @@
 from django.db import models
 
+
 # Create your models here.
 
-#定义图书模型类BookInfo
+# 定义图书模型类BookInfo
 class BookInfo(models.Model):
     btitle = models.CharField(max_length=20, verbose_name='名称')
     bpub_date = models.DateField(verbose_name='发布日期')
     bread = models.IntegerField(default=0, verbose_name='阅读量')
     bcomment = models.IntegerField(default=0, verbose_name='评论量')
+    image = models.ImageField(upload_to='booktest', verbose_name='图片', null=True)
     is_delete = models.BooleanField(default=False, verbose_name='逻辑删除')
 
     class Meta:
@@ -18,7 +20,9 @@ class BookInfo(models.Model):
     def __str__(self):
         """定义每个数据对象的显示信息"""
         return self.btitle
-#定义英雄模型类HeroInfo
+
+
+# 定义英雄模型类HeroInfo
 class HeroInfo(models.Model):
     GENDER_CHOICES = (
         (0, 'female'),
